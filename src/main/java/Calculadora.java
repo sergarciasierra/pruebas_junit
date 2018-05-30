@@ -10,7 +10,7 @@ public class Calculadora {
     }
 
 	public int resta(int a, int b) {
-		ans = a -b;
+		ans = a - b;
         return ans;
     }
 	
@@ -22,6 +22,15 @@ public class Calculadora {
 	public int resta(int r) {
 		ans -= r;
 		return ans;
+	}
+	
+	public int divide(int a, int b) {
+		if (b == 0) {
+			throw new ArithmeticException("No puedes dividir por cero!!...");
+		}
+		ans = a / b;
+		return ans;
+		
 	}
 	
 	public int ans() {

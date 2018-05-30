@@ -36,4 +36,18 @@ public class CalculadoraTest {
         int esperado = 5;
         assertEquals(esperado, resultado);
     }
+    
+    @Test
+    public void testDivide() {
+    	System.out.println("Divide()");
+    	int resultado = calc.divide(12, 4);
+    	int esperado = 3;
+    	assertEquals(esperado, resultado);
+    }
+    
+    @Test(expected = ArithmeticException.class)
+    public void testDivPorCero() {
+    	calc.divide(3, 0);
+    	
+    }
 }
