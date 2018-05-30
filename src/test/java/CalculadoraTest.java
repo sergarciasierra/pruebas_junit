@@ -3,21 +3,33 @@ import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 
 public class CalculadoraTest {
-	Calculadora calc;
+	static Calculadora calc;
+	
+	@BeforeClass
+	public static void beforeClass() {
+		System.out.println("BeforeClass(");
+		calc = new Calculadora();
+	}
 	
 	@Before
 	public void before() {
 		System.out.println("Before()");
-		calc = new Calculadora();
+		calc.clear();
 	}
 	
 	@After
 	public void after() {
-		System.out.println("after()");
-		calc.clear();
+		System.out.println("After()");
+	}
+	
+	@AfterClass
+	public static void afterClass() {
+		System.out.println("AfterClass()");
 	}
 	
     @Test
@@ -45,8 +57,10 @@ public class CalculadoraTest {
     	assertEquals(esperado, resultado);
     }
     
-    @Test(expected = ArithmeticException.class)
+    @Test
+    (expected = ArithmeticException.class)
     public void testDivPorCero() {
+    	System.out.println("DivPorCero()");
     	calc.divide(3, 0);
     	
     }
